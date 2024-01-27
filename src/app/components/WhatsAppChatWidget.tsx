@@ -2,13 +2,13 @@
 import React, {useEffect, useRef, useState} from 'react';
 import '@/app/globals.css';
 
-const WhatsAppChatWidget = () => {
+const WhatsAppChatWidget: React.FC = () => {
   const [chatBoxState, setChatBoxState] = useState('closed');
-  const chatBoxRef = useRef(null);
+  const chatBoxRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (chatBoxRef.current && !chatBoxRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (chatBoxRef.current && !chatBoxRef.current.contains(event.target as Node)) {
         setChatBoxState('closed');
       }
     };
